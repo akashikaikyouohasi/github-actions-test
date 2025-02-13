@@ -1,4 +1,4 @@
-name: get pr number
+name: CI processing
 on:
   pull_request:
     branches:
@@ -27,5 +27,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Success! PR number is ${{ github.event.number }}'
+              body: 'CI Success! PR number is ${{ github.event.number }}'
             })
