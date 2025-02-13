@@ -26,6 +26,7 @@ jobs:
               state: 'closed',
             });
             console.log(pr3.data);
+            console.log('-------------------');
             
             const pr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
               owner: context.repo.owner,
@@ -39,7 +40,7 @@ jobs:
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: 'PR number is ${ prNumber }'
+                body: `PR number is ${prNumber}`
               })
             }
       - name: Post PR comment
