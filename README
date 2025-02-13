@@ -1,0 +1,2 @@
+- GitHub Actionsのactions/github-scriptについては以下参照
+  - https://octokit.github.io/rest.js/v21/#repos-list-pull-requests-associated-with-commit
