@@ -40,7 +40,7 @@ jobs:
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: 'Deploy Completed!! PR number is ${{ github.event.number }}'
+                body: `Deploy Completed!! PR number is ${prNumber}`
               })
             }
       # - name: Post PR comment
