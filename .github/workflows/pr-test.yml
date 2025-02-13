@@ -19,20 +19,18 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
-            console.log(context.repo);
-            console.log(context.ref);
+            console.log(context);
             const pr3 = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'closed',
             });
             console.log(pr3.data);
-
-            const pr = await github.rest.pulls.list({
+            
+            const pr = await github.rest.pulls.listPullRequestsAssociatedWithCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: 'closed',
-              head: `${context.repo.owner}:${context.sha}`
+              commit_sha: context.sha
             });
             console.log(pr.data);
             if (pr.data.length > 0) {
