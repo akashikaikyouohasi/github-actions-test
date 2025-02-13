@@ -19,10 +19,20 @@ jobs:
         uses: actions/github-script@v7.0.1
         with:
           script: |
+            console.log(context.repo);
+            console.log(context.ref);
+            const pr3 = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed',
+            });
+            console.log(pr3.data);
+            
             const pr = await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'closed',
+              head: `${context.repo.owner}:${context.sha}`
             });
             console.log(pr.data);
             if (pr.data.length > 0) {
@@ -31,7 +41,7 @@ jobs:
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: 'PR number is ${{ github.event.number }}'
+                body: 'PR number is ${{ prNumber }}'
               })
             }
       - name: Post PR comment
