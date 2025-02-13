@@ -27,7 +27,7 @@ jobs:
             });
             console.log(pr3.data);
             
-            const pr = await github.rest.pulls.listPullRequestsAssociatedWithCommit({
+            const pr = await github.rest.repos.listPullRequestsAssociatedWithCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
               commit_sha: context.sha
